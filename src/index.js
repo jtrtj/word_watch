@@ -4,7 +4,6 @@ const topWordUrl = 'https://wordwatch-api.herokuapp.com'
 $(document).ready(() => {
   getTopWord()
 })
-let wordArray = []
 
 const handleResponse = (response) => {
   return response.json()
@@ -49,14 +48,13 @@ const postUserWords = () => {
     postAWord(word)
   })
   getTopWord()
-  alert(wordArray.join(" "))
 }
 
 
 const postAWord = word => {
   fetch(`${topWordUrl}/api/v1/words`, newWordPayload(word))
   .then(handleResponse)
-  .then(response => wordArray.push(response["message"]))
+  .then(response => console.log(response))
 }
 
 const newWordPayload = word => {
